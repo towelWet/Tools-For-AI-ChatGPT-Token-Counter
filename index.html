@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GPT3 Token Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            margin-bottom: 10px;
+        }
+        .counter {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>GPT3 Token Counter</h1>
+    <textarea id="textArea" placeholder="Type your text here..."></textarea>
+    <div id="tokenCount" class="counter">Tokens: 0</div>
+    <div id="charCount" class="counter">Characters: 0</div>
+
+    <script>
+        function countTokens(text) {
+            // This is a simplified token count and may not match the GPT-3's tokenization exactly
+            // We count a token as any sequence of characters separated by a space
+            return text.trim().split(/\s+/).length;
+        }
+
+        const textArea = document.getElementById('textArea');
+        const tokenCount = document.getElementById('tokenCount');
+        const charCount = document.getElementById('charCount');
+
+        textArea.addEventListener('input', function() {
+            const text = textArea.value;
+            tokenCount.textContent = "Tokens: " + countTokens(text);
+            charCount.textContent = "Characters: " + text.length;
+        });
+    </script>
+</body>
+</html>
